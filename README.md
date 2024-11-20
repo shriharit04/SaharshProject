@@ -62,3 +62,7 @@ The script will create a file named payments_record.xlsx  containing the filtere
 - The script assumes that the bank statement contains the columns Txn Date, Value Date, Description, FLAT NO, Branch Code, Credit, R.NO, and R.DATE. Ensure that the input file follows this structure.
 - The logic to find the flat number from the bank statement can be expanded or customized based on further requirements.
 
+
+
+### Upcomng features
+- Retrieve the flat number from db using ODBC
