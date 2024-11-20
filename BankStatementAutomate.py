@@ -16,27 +16,27 @@ def find_name(desc):
         name = desc.split("/")[3]
     
     # NEFT Cr
-    if desc[:8]=="NEFT Cr-":
+    elif desc[:8]=="NEFT Cr-":
         name = desc.split("-")[3]
     
     # MOB-IMPS-CR
-    if desc[:12]=="MOB-IMPS-CR/":
+    elif desc[:12]=="MOB-IMPS-CR/":
         name = desc.split("/")[1]
     
     # MB
-    if desc[:2]=="MB":
+    elif desc[:2]=="MB":
         name = desc.split("/")[2]
     
     # INET-IMPS-CR/
-    if desc[:13]=="INET-IMPS-CR/":
+    elif desc[:13]=="INET-IMPS-CR/":
         name = desc.split("/")[1]
     
     # funds transfer
-    if desc[:15]=="Funds Transfer ":
+    elif desc[:15]=="Funds Transfer ":
         name = desc.split("-")[-1]
     
     # cash deposit
-    if desc[:13]=="Cash Deposit " :
+    elif desc[:13]=="Cash Deposit " :
         name = desc.split("-")[-1]
         
     return name
@@ -53,6 +53,8 @@ ws.title = f"Maintenance-{month}"
 
 maintenance_amt = int(os.getenv("MAINTENANCE_AMT"))
 bank_statement_location = os.getenv("BANK_STATEMENT_LOCATION")
+bank_statement_location = r"{}".format(bank_statement_location)
+
 
 # Read the Excel file
 df = pd.read_excel(bank_statement_location)
@@ -60,6 +62,9 @@ df = pd.read_excel(bank_statement_location)
 # Write headers to the first row
 ws.append(["Txn Date", "Value Date", "Name", "Flat No", "Description", "Branch Code", "Credit", "R.NO", "R.DATE"])
 
+
+names_not_retrieved = 0
+names_retrieved = 0
 for index, row in df.iterrows():
     amt = row["Credit"]
     
@@ -74,6 +79,11 @@ for index, row in df.iterrows():
 
         #find name
         name = find_name(row["Description"])
+
+        if name == "":
+            names_not_retrieved += 1
+        else:
+            names_retrieved += 1
 
         #find flat num - add logic later
         flat_no = row["FLAT NO"]
@@ -94,6 +104,10 @@ for index, row in df.iterrows():
 # Save the workbook to a file
 wb.save("payments_record.xlsx")
 wb.close()
+
+print(f"Names retrieved: {names_retrieved}")
+print(f"Names failed to retrieve: {names_not_retrieved}")
+print("Check payment_record.xlsx and verify before proceeding")
 
 
 
