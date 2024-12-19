@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Reminder - Sree Daksha Saharsh Apartments</title>
+    <style>
+        body {{
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }}
+        .email-container {{
+            width: 100%;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }}
+        .email-content {{
+            width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }}
+        h1 {{
+            color: #6a4e23; /* Brown */
+        }}
+        .greeting {{
+            font-size: 18px;
+            color: #333333;
+        }}
+        .reminder-message {{
+            font-size: 16px;
+            color: #555555;
+            line-height: 1.6;
+        }}
+        .payment-info {{
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }}
+        .payment-info .due {{
+            font-weight: bold;
+            font-size: 18px;
+            color: #d9534f; /* Red for Pending */
+        }}
+        .payment-info .paid {{
+            font-weight: bold;
+            font-size: 18px;
+            color: #5bc0de; /* Blue for Paid */
+        }}
+        .footer {{
+            font-size: 14px;
+            color: #888888;
+            text-align: center;
+            padding-top: 20px;
+        }}
+        .footer a {{
+            color: #6a4e23;
+            text-decoration: none;
+        }}
+        .reply-link {{
+            font-size: 14px;
+            text-align: center;
+            margin-top: 20px;
+        }}
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-content">
+            <h1>Gentle Reminder: Outstanding Maintenance Balance Update</h1>
+            <p class="greeting">Dear {name},</p>
+            <p class="reminder-message">
+                This is a friendly reminder from the management of Sree Daksha Saharsh Apartments, Coimbatore, regarding your maintenance payment for the month of {month}.
+            </p>
+            
+            <div class="payment-info">
+                <p><strong>Flat Number:</strong> {flat_no}</p>
+                <p><strong>Outstanding Balance:</strong> 
+                    <span class="{outstanding_bal_class}">Rs {outstanding_bal} - {status}</span>
+                </p>
+            </div>
+
+            <p class="reminder-message">
+                Kindly make the necessary payment if there is an outstanding balance. If you've already made the payment, please disregard this message.
+            </p>
+
+            <div class="reply-link">
+                <p>If you have any questions or concerns, please do not reply to this email. Instead, kindly contact us at <a href="mailto:support@saharshapts.co.in">support@saharshapts.co.in</a> for assistance.</p>
+            </div>
+
+            <div class="footer">
+                <p>Thank you for being a valued resident of Sree Daksha Saharsh Apartments.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
